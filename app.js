@@ -6,11 +6,16 @@ const dbModel = require('./users')
 const app = express()
 
 
+app.use(express.urlencoded({extended:false}))
+
 
 app.get('/',(req,res)=>{
     res.send('Hello')
 })
 
+app.post('/register', (req,res)=>{
+    res.send(req.body)
+})
 
 const startServer =async()=>{
     await sequel.authenticate()
