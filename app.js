@@ -2,7 +2,7 @@ const express = require('express')
 const dotEnv = require('dotenv').config()
 const sequel = require('./dbConnect')
 const PORT = process.env.PORT || 2190
-
+// const dbModel = require('./users')
 const app = express()
 
 
