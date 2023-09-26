@@ -13,6 +13,8 @@ app.get('/',(req,res)=>{
     res.send('Hello')
 })
 
+
+
 app.post('/register', async(req,res)=>{
    try {
     const {user_name,password}=req.body
@@ -26,6 +28,18 @@ app.post('/register', async(req,res)=>{
     console.log('Internal Server Error');
    }
 })
+
+app.post('/login',async(req,res)=>{
+    try {
+       const {user_name,password} =req.body
+      const results = await dbModel.findOne({where:{user_name}})
+      res.send(results)
+    } catch (error) {
+       console.log('Can not login !');
+    }
+   
+   })
+
 
 const startServer =async()=>{
     await sequel.authenticate()
