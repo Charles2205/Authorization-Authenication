@@ -12,7 +12,8 @@ app.use(express.urlencoded({extended:false}))
 app.use(expressSession({
     secret: APP_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie:{}
 }))
 app.use(helmet)
 app.get('/',(req,res)=>{
