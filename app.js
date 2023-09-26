@@ -50,8 +50,11 @@ app.post('/login',async(req,res)=>{
        console.log('Can not login 😒!');
     }
    
-   })
+})
 
+app.get('/homepage',(req,res)=>{
+    res.send('Welcome')
+})
 
 const startServer =async()=>{
     await sequel.authenticate()
