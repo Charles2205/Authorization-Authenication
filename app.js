@@ -5,10 +5,15 @@ const PORT = process.env.PORT || 2190
 const dbModel = require('./users')
 const app = express()
 const bcrypt = require('bcrypt')
-
+const expressSession = require('express-session')
+const { default: helmet } = require('helmet')
+const APP_SECRET = process.env.APP_SECRET
 app.use(express.urlencoded({extended:false}))
-
-
+app.use(expressSession({
+    secret: APP_SECRET,
+    
+}))
+app.use(helmet)
 app.get('/',(req,res)=>{
     res.send('Hello')
 })
