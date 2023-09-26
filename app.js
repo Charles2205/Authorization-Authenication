@@ -11,7 +11,8 @@ const APP_SECRET = process.env.APP_SECRET
 app.use(express.urlencoded({extended:false}))
 app.use(expressSession({
     secret: APP_SECRET,
-    
+    resave: false,
+    saveUninitialized: true
 }))
 app.use(helmet)
 app.get('/',(req,res)=>{
