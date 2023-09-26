@@ -32,10 +32,22 @@ app.post('/register', async(req,res)=>{
 app.post('/login',async(req,res)=>{
     try {
        const {user_name,password} =req.body
-      const results = await dbModel.findOne({where:{user_name}})
+    //   determine if the username is vaild in the database
+        results = await dbModel.findOne({where:{user_name}})
+        if(!results){
+            res.send('Invaild Credentials 😒')
+        }
+        const correctPassword = results.password
+
+        // comparing hashed pass with current password
+        const isCorrectPassword =await bcrypt.compare(password,correctPassword)
+        if(!isCorrectPassword){
+            res.send('Invaild Credentials 😒')
+        }
+        res.send('Logged in Successfully  🎉 🎊')
       res.send(results)
     } catch (error) {
-       console.log('Can not login !');
+       console.log('Can not login 😒!');
     }
    
    })
