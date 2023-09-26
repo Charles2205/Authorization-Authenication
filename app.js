@@ -17,10 +17,10 @@ app.post('/register', async(req,res)=>{
    try {
     const {user_name,password}=req.body
     const results  =await  dbModel.create({user_name,password})
-    if (!results) {
-     return res.send('Unable to create user')
+    if (results) {
+        res.send('User created successfully')
     } 
-    res.send('User created successfully')
+    res.send('Unable to create user')
    } catch (error) {
     console.log('Internal Server Error');
    }
