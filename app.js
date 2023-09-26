@@ -16,6 +16,7 @@ app.get('/',(req,res)=>{
 app.post('/register', async(req,res)=>{
     const {user_name,password}=req.body
     await dbModel.create({user_name,password})
+    res.send('Sent Successfully')
 })
 
 const startServer =async()=>{
