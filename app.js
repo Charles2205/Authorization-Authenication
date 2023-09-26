@@ -53,7 +53,7 @@ app.post('/login',async(req,res)=>{
 })
 
 app.get('/homepage',(req,res)=>{
-    res.send('Welcome')
+    res.send(`Welcome`)
 })
 
 const startServer =async()=>{
