@@ -14,12 +14,16 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/register', async(req,res)=>{
+   try {
     const {user_name,password}=req.body
-   const results  =await  dbModel.create({user_name,password})
-   if (!results) {
-    return res.send('Unable to create user')
-   } 
-   res.send('User created successfully')
+    const results  =await  dbModel.create({user_name,password})
+    if (!results) {
+     return res.send('Unable to create user')
+    } 
+    res.send('User created successfully')
+   } catch (error) {
+    console.log('Internal Server Error');
+   }
 })
 
 const startServer =async()=>{
