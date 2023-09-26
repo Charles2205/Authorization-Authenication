@@ -4,7 +4,7 @@ const sequel = require('./dbConnect')
 const PORT = process.env.PORT || 2190
 const dbModel = require('./users')
 const app = express()
-
+const bcrypt = require('bcrypt')
 
 app.use(express.urlencoded({extended:false}))
 
