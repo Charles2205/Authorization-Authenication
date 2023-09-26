@@ -16,7 +16,8 @@ app.get('/',(req,res)=>{
 app.post('/register', async(req,res)=>{
    try {
     const {user_name,password}=req.body
-    const results  =await  dbModel.create({user_name,password})
+    const hashPassword = await bcrypt.hash(password,10)
+    const results  =await  dbModel.create({user_name,hashPassword})
     if (results) {
         res.send('User created successfully')
     } 
