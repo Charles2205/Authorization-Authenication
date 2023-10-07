@@ -18,9 +18,7 @@ app.use(expressSession({
     cookie:{}
 }))
 
-app.get('/',(req,res)=>{
-    res.send('Hello')
-})
+
 
 
 
@@ -56,6 +54,7 @@ app.post('/login',async(req,res)=>{
         req.session.user =results.id
     
         res.send('Logged in Successfully  🎉 🎊')
+        // console.log(req.session)
       
     } catch (error) {
        console.log(error);
